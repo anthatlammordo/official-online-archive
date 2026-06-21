@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼体育 - 活力运动伙伴</title>
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #f8fafc;
+        }
+
+        a {
+            color: #e76f51;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #c0543a;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero 区 – 深色背景 */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            padding: 80px 0 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: #f8fafc;
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #f97316, #e76f51);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 28px;
+            color: #cbd5e1;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(231, 111, 81, 0.18);
+            border: 1px solid rgba(231, 111, 81, 0.3);
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #fca5a5;
+            margin-bottom: 12px;
+        }
+
+        /* 正文浅色区 */
+        .section {
+            padding: 56px 0;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: #0f172a;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 4px;
+            background: #e76f51;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            margin-top: 16px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .card .emoji-badge {
+            display: inline-block;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        /* 说明区 – 双列 */
+        .desc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            margin: 20px 0 12px;
+        }
+
+        .desc-block {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px 24px;
+            border-left: 5px solid #e76f51;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .desc-block h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .desc-block p {
+            font-size: 0.96rem;
+            color: #334155;
+        }
+
+        /* FAQ 摘要 */
+        .faq-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0;
+        }
+
+        .faq-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .faq-question::before {
+            content: '▸';
+            color: #e76f51;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            color: #475569;
+            font-size: 0.93rem;
+            padding-left: 22px;
+        }
+
+        /* 底部链接 */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 36px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            margin: 6px 0;
+        }
+
+        .footer .small-note {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 12px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .desc-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 56px 0 48px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero 区 -->
+    <section class="hero">
+        <div class="container">
+            <span class="tagline">⚡ 让运动融入日常</span>
+            <h1>乐鱼体育 · 动起来的生活</h1>
+            <p>不论你是晨间慢跑的独行侠，还是周末球场的团队派，<br>这里有一份属于你的运动灵感。一起探索更自在的节奏。</p>
+        </div>
+    </section>
+
+    <!-- 优势区 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">我们关注什么</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <span class="emoji-badge">🏃</span>
+                    <h3>运动多样性</h3>
+                    <p>从有氧到力量，从单人训练到团体对抗，总有一种方式让你愿意坚持下去。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-badge">📊</span>
+                    <h3>轻松记录</h3>
+                    <p>简单的进度追踪和运动小贴士，帮助你在不知不觉中养成习惯，不必刻意。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-badge">🤝</span>
+                    <h3>真实的交流</h3>
+                    <p>与同样热爱运动的人分享经验，不贩卖焦虑，只交换实在的体会和鼓励。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区 -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">一些场景与理解</h2>
+            <div class="desc-grid">
+                <div class="desc-block">
+                    <h3>工作日的喘息</h3>
+                    <p>下班后换上跑鞋，沿着河边慢跑二十分钟。不需要专业装备，不必追求配速，只是让身体从屏幕前释放出来。很多人从这里开始，慢慢发现运动带来的不只是流汗，还有思路的清晰。</p>
+                </div>
+                <div class="desc-block">
+                    <h3>周末的球场时光</h3>
+                    <p>约上三五好友，打一场半场篮球或羽毛球。输赢不是重点，击掌和笑声才是。运动之后的拉伸和闲聊，往往比比赛本身更让人放松。这也是很多人坚持每周动一动的原因。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">常见疑问 · 简短版</h2>
+            <ul class="faq-list">
+                <li>
+                    <div class="faq-question">运动必须每天坚持吗？</div>
+                    <div class="faq-answer">不一定。每周三到四次，每次半小时以上，已经能带来明显变化。关键是找到自己喜欢的方式，而不是强迫自己。</div>
+                </li>
+                <li>
+                    <div class="faq-question">刚开始运动应该注意什么？</div>
+                    <div class="faq-answer">热身和冷却很重要，从低强度开始，给身体适应的时间。不要和别人比较，按照自己的节奏前进就好。</div>
+                </li>
+                <li>
+                    <div class="faq-question">如何让运动更有趣？</div>
+                    <div class="faq-answer">换着花样来，比如这周跑步，下周游泳或骑行。也可以约朋友一起，或者边听播客边动。把运动变成一种日常的陪伴，而不是任务。</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="footer">
+        <div class="container">
+            <p>如果你正在寻找一个能聊运动、记录点滴的地方，可以来看看 <a href="https://official-online-leyu.com.cn">乐鱼体育</a>。</p>
+            <p style="margin-top: 12px;">这里没有复杂的规则，只有一群和你一样喜欢动起来的人。</p>
+            <p class="small-note">—— 保持好奇，保持活力 ——</p>
+        </div>
+    </footer>
+
+</body>
+</html>
